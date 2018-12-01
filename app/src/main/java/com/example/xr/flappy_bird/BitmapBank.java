@@ -9,7 +9,7 @@ public class BitmapBank {
     Bitmap background;
 
     public BitmapBank(Resources res) {
-        background = BitmapFactory.decodeResource(res, R.drawable.);
+        background = BitmapFactory.decodeResource(res, R.drawable.scroll);
         background = scaleImage(background);
     }
 
