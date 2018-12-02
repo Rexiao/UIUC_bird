@@ -7,11 +7,32 @@ import android.graphics.BitmapFactory;
 public class BitmapBank {
 
     Bitmap background;
+    Bitmap[] bird;
 
     public BitmapBank(Resources res) {
         background = BitmapFactory.decodeResource(res, R.drawable.scroll);
         background = scaleImage(background);
+        bird = new Bitmap[2];
+        bird[0] = BitmapFactory.decodeResource(res, R.drawable.frame_1);
+        bird[1] = BitmapFactory.decodeResource(res, R.drawable.frame_2);
     }
+
+
+    //return bird bitmap
+    public Bitmap getBird(int index) {
+        return bird[index];
+    }
+
+    //return birdWidth
+    public int getBirdWidth() {
+        return bird[0].getWidth();
+    }
+
+    //return birdHeight
+    public int getBirdHeight() {
+        return bird[0].getHeight();
+    }
+
 
     //Return background bitmap
     public Bitmap getBackground(){
