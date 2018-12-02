@@ -1,6 +1,8 @@
 package com.example.xr.flappy_bird;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,6 +14,9 @@ public class GameEngine {
     static int gameState;
     ArrayList<Tube> tubes;
     Random random;
+    int score; //current score
+    int scoringTube;
+    Paint scorePaint;
 
     public GameEngine(){
         backgroundImage = new BackgroundImage();
@@ -31,10 +36,23 @@ public class GameEngine {
             Tube tube = new Tube(tubeX, topTubeOffsetY);
             tubes.add(tube);
         }
+        score = 0;
+        scoringTube = 0;
+        scorePaint = new Paint();
+        scorePaint.setColor(Color.BLACK);
+        scorePaint.setTextSize(100);
+        scorePaint.setTextAlign(Paint.Align.LEFT);
     }
 
     public void updateAndDrawTubes(Canvas canvas) {
         if (gameState == 1) {
+            if (tubes.get(scoringTube).getTubeX() < bird.getBirdX() - AppConstants.getBitmapBank().getTubeWidth()) {
+                score ++;
+                scoringTube ++;
+                if (scoringTube > AppConstants.numberOfTubes - 1) {
+                    scoringTube = 0;
+                }
+            }
             for (int i = 0; i < AppConstants.numberOfTubes; i++) {
                 if (tubes.get(i).getTubeX() < - AppConstants.getBitmapBank().getTubeWidth()) {
                     tubes.get(i).setTubeX(tubes.get(i).getTubeX() +
@@ -47,7 +65,9 @@ public class GameEngine {
                 canvas.drawBitmap(AppConstants.getBitmapBank().getTopTube(), tubes.get(i).getTubeX(), tubes.get(i).getTopTubeY(), null);
                 canvas.drawBitmap(AppConstants.getBitmapBank().getBottomTube(), tubes.get(i).getTubeX(), tubes.get(i).getBottomTubeY(), null);
             }
+            canvas.drawText("Score: " + score, 0, 110, scorePaint);
         }
+
     }
 
     public void updateAndDrawBackgroundImage(Canvas canvas){
