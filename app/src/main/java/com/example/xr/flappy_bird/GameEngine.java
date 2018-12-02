@@ -3,6 +3,7 @@ package com.example.xr.flappy_bird;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -46,12 +47,19 @@ public class GameEngine {
 
     public void updateAndDrawTubes(Canvas canvas) {
         if (gameState == 1) {
-            if (tubes.get(scoringTube).getTubeX() < bird.getBirdX() - AppConstants.getBitmapBank().getTubeWidth()) {
-                score ++;
-                scoringTube ++;
-                if (scoringTube > AppConstants.numberOfTubes - 1) {
-                    scoringTube = 0;
-                }
+            if(tubes.get(scoringTube).getTubeX() < bird.getBirdX() + AppConstants.getBitmapBank().getBirdWidth()
+                    && (tubes.get(scoringTube).getTopTubeOffsetY() > bird.getBirdY()
+                    || tubes.get(scoringTube).getBottomTubeY() < bird.getBirdY() + AppConstants.getBitmapBank().getBirdHeight())
+                    ) {
+                //go to game over
+                gameState = 2;
+                Log.d("Game", "Over");
+            } else if (tubes.get(scoringTube).getTubeX() < bird.getBirdX() - AppConstants.getBitmapBank().getTubeWidth()) {
+                  score ++;
+                  scoringTube ++;
+                  if (scoringTube > AppConstants.numberOfTubes - 1) {
+                      scoringTube = 0;
+                  }
             }
             for (int i = 0; i < AppConstants.numberOfTubes; i++) {
                 if (tubes.get(i).getTubeX() < - AppConstants.getBitmapBank().getTubeWidth()) {
