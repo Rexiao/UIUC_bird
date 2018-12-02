@@ -12,13 +12,30 @@ public class AppConstants {
     static int SCREEN_WIDTH, SCREEN_HEIGHT;
     static int gravity;
     static int velocity_when_jumped;
+    static int gap_between_tubes;
+    static int numberOfTubes;
+    static int tubeVelocity;
+    static int minTubeOffsetY;
+    static int maxTubeOffsetY;
+    static int distanceBetweenTubes;
 
     public static void initialization(Context context){
         setScreenSize(context);
         bitmapBank = new BitmapBank(context.getResources());
+        setGameConstants();
         gameEngine = new GameEngine();
+    }
+
+    public static void setGameConstants() {
         AppConstants.gravity = 3;
         AppConstants.velocity_when_jumped = -40;
+        AppConstants.gap_between_tubes = 600;
+        AppConstants.numberOfTubes = 2;
+        AppConstants.tubeVelocity = 12;
+        AppConstants.minTubeOffsetY = (int) (AppConstants.gap_between_tubes / 2.0);
+        AppConstants.maxTubeOffsetY = AppConstants.SCREEN_HEIGHT - AppConstants.minTubeOffsetY -
+                AppConstants.gap_between_tubes;
+        AppConstants.distanceBetweenTubes = AppConstants.SCREEN_WIDTH * 3 / 4;
     }
 
     // Return BitmapBank instance

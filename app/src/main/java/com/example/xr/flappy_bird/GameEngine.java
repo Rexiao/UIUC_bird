@@ -2,11 +2,16 @@ package com.example.xr.flappy_bird;
 
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class GameEngine {
 
     BackgroundImage backgroundImage;
     Bird bird;
     static int gameState;
+    ArrayList<Tube> tubes;
+    Random random;
 
     public GameEngine(){
         backgroundImage = new BackgroundImage();
@@ -15,6 +20,34 @@ public class GameEngine {
         //1 playing
         //2 game over
         gameState = 0;
+        tubes = new ArrayList<>();
+        random = new Random();
+        for (int i = 0; i < AppConstants.numberOfTubes; i++) {
+            int tubeX = AppConstants.SCREEN_WIDTH + i * AppConstants.distanceBetweenTubes;
+            //get topTubeOffsetY
+            int topTubeOffsetY = AppConstants.minTubeOffsetY +
+                    random.nextInt(AppConstants.maxTubeOffsetY - AppConstants.minTubeOffsetY + 1);
+            //create tube object
+            Tube tube = new Tube(tubeX, topTubeOffsetY);
+            tubes.add(tube);
+        }
+    }
+
+    public void updateAndDrawTubes(Canvas canvas) {
+        if (gameState == 1) {
+            for (int i = 0; i < AppConstants.numberOfTubes; i++) {
+                if (tubes.get(i).getTubeX() < - AppConstants.getBitmapBank().getTubeWidth()) {
+                    tubes.get(i).setTubeX(tubes.get(i).getTubeX() +
+                            AppConstants.numberOfTubes * AppConstants.distanceBetweenTubes);
+                    int topTubeOffsetY = AppConstants.minTubeOffsetY +
+                            random.nextInt(AppConstants.maxTubeOffsetY - AppConstants.minTubeOffsetY + 1);
+                    tubes.get(i).setTopTubeOffsetY(topTubeOffsetY);
+                }
+                tubes.get(i).setTubeX(tubes.get(i).getTubeX() - AppConstants.tubeVelocity);
+                canvas.drawBitmap(AppConstants.getBitmapBank().getTopTube(), tubes.get(i).getTubeX(), tubes.get(i).getTopTubeY(), null);
+                canvas.drawBitmap(AppConstants.getBitmapBank().getBottomTube(), tubes.get(i).getTubeX(), tubes.get(i).getBottomTubeY(), null);
+            }
+        }
     }
 
     public void updateAndDrawBackgroundImage(Canvas canvas){
