@@ -18,6 +18,7 @@ public class AppConstants {
     static int minTubeOffsetY;
     static int maxTubeOffsetY;
     static int distanceBetweenTubes;
+    static Context gameActivityContext;
 
     public static void initialization(Context context){
         setScreenSize(context);

@@ -51,11 +51,11 @@
                 tools:text="Score: " />
 
             <TextView
-                android:id="@+id/finalScore"
+                android:id="@+id/tvScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:text="0"
                 android:textSize="36sp" />
         </LinearLayout>
         <LinearLayout
@@ -70,11 +70,11 @@
                 tools:text="Personal best: " />
 
             <TextView
-                android:id="@+id/PersonalBest"
+                android:id="@+id/tvPersonalBest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:text="0"
                 android:textSize="36sp" />
         </LinearLayout>
     </LinearLayout>
