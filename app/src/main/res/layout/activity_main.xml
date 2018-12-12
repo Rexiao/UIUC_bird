@@ -25,4 +25,18 @@
         android:layout_below="@+id/imageButton"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/holo_red_dark"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp"
+        android:text="Flappy Hotdog"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorEdgeEffect"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 </RelativeLayout>

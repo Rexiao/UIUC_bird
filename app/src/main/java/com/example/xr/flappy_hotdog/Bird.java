@@ -1,4 +1,4 @@
-package com.example.xr.flappy_bird;
+package com.example.xr.flappy_hotdog;
 
 public class Bird {
 

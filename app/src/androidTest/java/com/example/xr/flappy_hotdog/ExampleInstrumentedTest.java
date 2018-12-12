@@ -1,4 +1,4 @@
-package com.example.xr.flappy_bird;
+package com.example.xr.flappy_hotdog;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

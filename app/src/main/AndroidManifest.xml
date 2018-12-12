@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.xr.flappy_bird">
+    package="com.example.xr.flappy_hotdog">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.example.xr.flappy_hotdog.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -18,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"
+        <activity android:name="com.example.xr.flappy_hotdog.GameActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".GameOver"
+        <activity android:name="com.example.xr.flappy_hotdog.GameOver"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait">
         </activity>
